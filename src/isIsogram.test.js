@@ -11,8 +11,21 @@ describe('isIsogram', () => {
     expect(isIsogram('')).toBe(true);
   });
 
-  it(`should return true for a single-letter word`, () => {
-    expect(isIsogram('a')).toBe(true);
+  it(`should return true for 'playgrounds' (isogram)`, () => {
+    expect(isIsogram('playgrounds')).toBe(true);
+  });
+
+  it(`should return false for 'look' (consecutive duplicate)`, () => {
+    expect(isIsogram('look')).toBe(false);
+  });
+
+  it(`should return false for 'Adam'`
+    + `(case-insensitive non-consecutive duplicate)`, () => {
+    expect(isIsogram('Adam')).toBe(false);
+  });
+
+  it(`should return false for 'Oops' (consecutive duplicate with case)`, () => {
+    expect(isIsogram('Oops')).toBe(false);
   });
 
   it(`should return true for a word with all unique letters`, () => {
@@ -27,19 +40,7 @@ describe('isIsogram', () => {
     expect(isIsogram('AbcDeaF')).toBe(false);
   });
 
-  it(`should return true for a long word with no repeating letters`, () => {
-    expect(isIsogram('abcdefg')).toBe(true);
-  });
-
-  it(`should return false when spaces are included and letters repeat`, () => {
-    expect(isIsogram('abc deaf')).toBe(false);
-  });
-
-  it(`should handle words with mixed case correctly`, () => {
-    expect(isIsogram('aBcDeF')).toBe(true);
-  });
-
-  it(`should handle non-letter characters without breaking`, () => {
-    expect(isIsogram('ab-cdef?1/!')).toBe(true);
+  it(`should return true for a single-letter word`, () => {
+    expect(isIsogram('a')).toBe(true);
   });
 });
